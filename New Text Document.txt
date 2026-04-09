@@ -1,0 +1,73 @@
+Thinking: Now I have a complete picture of the project structure. Let me summarize what's necessary and what's not:
+Current Folder Structure:
+Necessary (Keep):
+| Folder/File | Reason |
+|-------------|--------|
+| backend/ | Main API - REQUIRED |
+| training/ | ML models - REQUIRED |
+| scripts/ | Retraining scripts - REQUIRED |
+| shared/ | Shared features module - REQUIRED |
+| index.html | Frontend UI - REQUIRED |
+| venv/ | Virtual environment - REQUIRED |
+| PROJECT_DOCUMENTATION.md | Documentation - Keep |
+| RETRAIN_GUIDE.md | Keep |
+| QUICK_START.md | Keep |
+| requirements.txt | Keep |
+| backend/.env | Your actual config - Keep |
+| backend/requirements.txt | Keep |
+| backend/logs/ | Prediction logs - Keep |
+Unnecessary (Can Delete):
+| Folder/File | Reason |
+|-------------|--------|
+| cache/ | VirusTotal cache - auto-generated, can delete |
+| shared/__pycache__/ | Python cache - auto-generated |
+| backend/__pycache__/ | Python cache - auto-generated |
+| fraud_detection_v2_1.html | Reference file from teammate - not used |
+| .env.example | Template - but keep for reference if want |
+| QUICKSTART.md | Duplicate - similar to QUICK_START.md |
+| req.py | Test file - may not need |
+| docker-compose.yml | Not used (no docker setup) |
+| Dockerfile | Not used (no docker setup) |
+I'll present a clear plan to the user.
+Project Folder Analysis:
+Here's the complete list:
+✅ Necessary (Keep):
+Folder/File
+backend/
+training/
+scripts/
+shared/
+index.html
+venv/
+PROJECT_DOCUMENTATION.md
+RETRAIN_GUIDE.md
+QUICK_START.md
+requirements.txt
+backend/logs/
+⚠️ Optional / Can Delete:
+Folder/File	Reason
+cache/	VT cache (auto-generated)
+fraud_detection_v2_1.html	Team reference file
+QUICKSTART.md	Duplicate of QUICK_START.md
+req.py	Test file
+docker-compose.yml	Not used (no docker)
+Dockerfile	Not used (no docker)
+README.md	Old readme
+shared/__pycache__/	Python cache
+backend/__pycache__/	Python cache
+---
+Summary - Recommended to Delete:
+# Safe to delete:
+cache/
+fraud_detection_v2_1.html
+QUICKSTART.md
+req.py
+docker-compose.yml
+Dockerfile
+README.md
+# Then run Python cache cleanup
+---
+### Questions Before Deleting:
+1. **Keep `fraud_detection_v2_1.html`?** - Team reference file - might be useful
+2. **Keep `docker-compose.yml`/`Dockerfile`?** - For future Docker setup?
+3. **Keep `QUICKSTART.md`?** - Similar to `QUICK_START.md` - duplicate

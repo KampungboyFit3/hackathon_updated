@@ -1,0 +1,1 @@
+{"url": "http://secure-paypal-login.fake.com/", "result": {"malicious": true, "suspicious": true, "harmless": false, "undetected": false, "confidence": 70, "detected_by": ["MockEngine1", "MockEngine2", "MockEngine3"], "total_engines": 70, "source": "virustotal_mock"}, "cached_at": "2026-04-08T22:19:07.612283"}

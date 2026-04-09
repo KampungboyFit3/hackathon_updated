@@ -1,0 +1,1 @@
+{"url": "https://www.signin.bankofamerica-login.com", "result": {"malicious": true, "suspicious": true, "harmless": false, "undetected": false, "confidence": 40, "detected_by": ["MockEngine1"], "total_engines": 70, "source": "virustotal_mock"}, "cached_at": "2026-04-08T00:09:28.703033"}

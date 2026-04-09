@@ -1,0 +1,19 @@
+url,prediction,confidence,source,model_version,vt_malicious,vt_confidence,vt_detected_by,timestamp
+https://www.pornhub.com/,legitimate,0.7743,ml_model,v2,False,,,2026-04-07T16:08:25.507078Z
+https://www.signin.bankofamerica-login.com,phishing,0.4,virustotal,v2,True,40,MockEngine1,2026-04-07T16:09:28.703526Z
+https://openclaw.ai/,phishing,0.7757,ml_model,v3,False,,,2026-04-08T13:08:07.807032Z
+https://www.google.com/,legitimate,0.8257,ml_model,v3,False,,,2026-04-08T13:08:26.009123Z
+pornhub.com,phishing,0.6784,ml_model,v3,False,,,2026-04-08T13:10:45.658769Z
+google.com,phishing,0.7266,ml_model,v3,False,,,2026-04-08T13:11:38.287196Z
+https://www.google.com,legitimate,0.8055,ml_model,v3,False,,,2026-04-08T13:11:52.903101Z
+https://www.pornhub.com,legitimate,0.8203,ml_model,v3,False,,,2026-04-08T13:12:01.086687Z
+https://www.google.com,legitimate,0.8055,ml_model,v3,False,,,2026-04-08T14:16:22.535325Z
+http://secure-paypal-login.fake.com/,phishing,0.7,virustotal,v3,True,70,MockEngine1|MockEngine2|MockEngine3,2026-04-08T14:19:07.612550Z
+URGENT! Your bank account has been suspended. Click here to verify: http://bit.ly/fake,phishing,0.95,rule_engine,v2,False,,,2026-04-08T14:41:34.697038Z
+"Hey, are we still meeting for dinner?",legitimate,0.9387,ml_model,v2,False,,,2026-04-08T14:42:01.463633Z
+"Hey, are we still meeting for dinner?",sms,legitimate,0.9387,ml_model,v2,False,,,2026-04-08T14:54:50.164414Z
+https://google.com/,url,phishing,0.7217,ml_model,v3,False,,,2026-04-08T14:58:55.909161Z
+https://www.google.com,url,legitimate,0.8055,ml_model,v3,False,,,2026-04-08T15:14:55.944512Z
+URGENT!Your bank,sms,phishing,0.5878,ml_model,v2,False,,,2026-04-08T15:15:08.233631Z
+https://www.google.com,url,legitimate,0.8055,ml_model,v3,False,,,2026-04-08T15:35:22.839998Z
+https://www.google.com/login,url,phishing,0.5559,ml_model,v3,False,,,2026-04-08T15:35:33.978852Z

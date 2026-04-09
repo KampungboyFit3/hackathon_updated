@@ -1,0 +1,1 @@
+{"url": "http://paypal-secure-login.xyz/verify", "result": {"malicious": true, "suspicious": true, "harmless": false, "undetected": false, "confidence": 100, "detected_by": ["MockEngine1", "MockEngine2", "MockEngine3"], "total_engines": 70, "source": "virustotal_mock"}, "cached_at": "2026-04-09T22:07:29.778454"}

@@ -1,0 +1,1 @@
+{"url": "http://bit.ly/3xFakeBank-verify", "result": {"malicious": true, "suspicious": true, "harmless": false, "undetected": false, "confidence": 40, "detected_by": ["MockEngine1"], "total_engines": 70, "source": "virustotal_mock"}, "cached_at": "2026-04-09T22:07:39.401955"}

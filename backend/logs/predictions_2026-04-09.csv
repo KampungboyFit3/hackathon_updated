@@ -1,0 +1,46 @@
+url,type,prediction,confidence,source,model_version,vt_malicious,vt_confidence,vt_detected_by,timestamp
+"Subject: Verify Account
+From: security@bank.com
+
+URGENT: Your account suspended. Click here: http://bit.ly/fake",email,phishing,0.84,rule_engine,v2,False,,,2026-04-09T11:48:12.868781Z
+"Subject: Meeting Update
+From: john@gmail.com
+
+Hey, are we still meeting tomorrow?",email,legitimate,0.6,ml_model,v2,False,,,2026-04-09T11:48:40.829219Z
+powershell -enc SGVsbG8=,command,malicious,0.6,rule_engine,v2,False,,,2026-04-09T12:30:53.410659Z
+"oi, kau kat mana?",sms,legitimate,0.7925,ml_model,v2,False,,,2026-04-09T12:45:44.781380Z
+oit ada tak malam ni?,sms,legitimate,0.7925,ml_model,v2,False,,,2026-04-09T13:31:26.517424Z
+http://bit.ly/fake-alert,url,phishing,0.648,ml_model,v3,False,,,2026-04-09T13:31:38.866325Z
+"Subject: Weekly Sync
+From: team@company.com
+Body: Hi team, see you at 2pm.",email,legitimate,0.6,ml_model,v2,False,,,2026-04-09T13:31:47.154924Z
+[bash] powershell -enc SQBFAFgA,command,malicious,0.6,rule_engine,v2,False,,,2026-04-09T13:31:55.735109Z
+https://google.com,url,phishing,0.6509,ml_model,v3,False,,,2026-04-09T13:37:06.400090Z
+http://bit.ly/fake,url,phishing,0.7597,ml_model,v3,False,,,2026-04-09T13:37:22.435432Z
+URGENT! Your bank account suspended. Click here: http://bit.ly/fake,sms,phishing,0.95,rule_engine,v2,False,,,2026-04-09T13:37:30.214331Z
+"Subject: Verify Account
+From: security@bank.com
+
+Click here to verify your account",email,phishing,0.9569,ml_model,v2,False,,,2026-04-09T13:37:38.667006Z
+git status,command,legitimate,0.7,ml_model,v2,False,,,2026-04-09T13:37:51.823058Z
+powershell -enc SGVsbG8=,command,malicious,0.6,rule_engine,v2,False,,,2026-04-09T13:38:02.106126Z
+https://google.com,url,phishing,0.6509,ml_model,v3,False,,,2026-04-09T13:39:28.571575Z
+http://bit.ly/fake-alert,url,phishing,0.648,ml_model,v3,False,,,2026-04-09T13:39:38.859403Z
+https://google.com,url,phishing,0.6509,ml_model,v3,False,,,2026-04-09T13:51:43.014309Z
+https://google.com,url,phishing,0.6509,ml_model,v3,False,,,2026-04-09T13:52:08.999075Z
+https://google.com,url,phishing,0.6509,ml_model,v3,False,,,2026-04-09T13:52:44.507044Z
+http://paypal-secure-login.xyz/verify,url,phishing,1.0,virustotal,v3,True,100,MockEngine1|MockEngine2|MockEngine3,2026-04-09T14:07:29.779364Z
+http://paypal-secure-login.xyz/verify,url,phishing,1.0,virustotal,v3,True,100,MockEngine1|MockEngine2|MockEngine3,2026-04-09T14:07:34.458242Z
+http://bit.ly/3xFakeBank-verify,url,phishing,0.4,virustotal,v3,True,40,MockEngine1,2026-04-09T14:07:39.402434Z
+"Subject: URGENT: Verify Your Account Now
+From: security@paypa1-verify.com
+
+Dear Customer,
+
+Your account has been compromised. Click the link below immediately to verify your identity and restore access.
+
+http://paypal-secure-verify.xyz/login?token=abc123
+
+Failure to verify within 24 hours will result in account suspension.
+
+PayPal Security Team",email,phishing,0.95,rule_engine,v2,False,,,2026-04-09T14:07:58.751769Z
