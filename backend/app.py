@@ -182,6 +182,88 @@ def list_logs():
     }
 
 
+@app.get("/logs/data")
+def get_logs_data(
+    limit: int = 50,
+    offset: int = 0,
+    type_filter: Optional[str] = None,
+    status_filter: Optional[str] = None
+):
+    """
+    Get prediction log entries with statistics.
+    - limit: Number of entries to return (default 50, max 100)
+    - offset: Skip first N entries for pagination
+    - type_filter: Filter by type (url, sms, email, command)
+    - status_filter: Filter by prediction (phishing, legitimate, suspicious)
+    """
+    import csv
+    from datetime import datetime
+    
+    log_dir = config.LOG_DIR
+    if not os.path.exists(log_dir):
+        return {"entries": [], "total_count": 0, "stats": {}}
+    
+    all_entries = []
+    files = sorted([f for f in os.listdir(log_dir) if f.endswith(".csv")], reverse=True)
+    
+    for filename in files:
+        filepath = os.path.join(log_dir, filename)
+        try:
+            with open(filepath, "r", encoding="utf-8") as f:
+                reader = csv.DictReader(f)
+                for row in reader:
+                    all_entries.append(row)
+        except Exception as e:
+            continue
+    
+    total_count = len(all_entries)
+    
+    filtered_entries = all_entries
+    if type_filter and type_filter != "all":
+        filtered_entries = [e for e in filtered_entries if e.get("type", "").lower() == type_filter.lower()]
+    if status_filter and status_filter != "all":
+        filtered_entries = [e for e in filtered_entries if e.get("prediction", "").lower() == status_filter.lower()]
+    
+    paginated_entries = filtered_entries[offset:offset + limit]
+    
+    entries = []
+    for entry in paginated_entries:
+        try:
+            conf = float(entry.get("confidence", 0)) * 100
+        except:
+            conf = 0
+        
+        entries.append({
+            "url": entry.get("url", ""),
+            "type": entry.get("type", "url"),
+            "prediction": entry.get("prediction", "legitimate"),
+            "confidence": round(conf, 1),
+            "source": entry.get("source", "ml_model"),
+            "vt_malicious": entry.get("vt_malicious", "False") == "True",
+            "timestamp": entry.get("timestamp", "")
+        })
+    
+    stats = {
+        "total": total_count,
+        "phishing": len([e for e in all_entries if e.get("prediction", "").lower() in ["phishing", "malicious"]]),
+        "legitimate": len([e for e in all_entries if e.get("prediction", "").lower() == "legitimate"]),
+        "suspicious": len([e for e in all_entries if e.get("prediction", "").lower() == "suspicious"]),
+        "by_type": {
+            "url": len([e for e in all_entries if e.get("type", "").lower() == "url"]),
+            "sms": len([e for e in all_entries if e.get("type", "").lower() == "sms"]),
+            "email": len([e for e in all_entries if e.get("type", "").lower() == "email"]),
+            "command": len([e for e in all_entries if e.get("type", "").lower() == "command"])
+        }
+    }
+    
+    return {
+        "entries": entries,
+        "total_count": total_count,
+        "filtered_count": len(filtered_entries),
+        "stats": stats
+    }
+
+
 class RetrainResponse(BaseModel):
     status: str
     version: Optional[str] = None

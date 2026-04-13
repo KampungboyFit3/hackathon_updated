@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 MODEL_PATH = os.path.join(BASE_DIR, "..", "training", "models", "phishing_model_rf_v2.pkl")
 FEATURE_NAMES_PATH = os.path.join(BASE_DIR, "..", "training", "models", "feature_names_v2.pkl")
-LOG_DIR = os.path.join(BASE_DIR, "logs")
+LOG_DIR = os.path.join(BASE_DIR, "backend", "logs")
 
 API_HOST = "0.0.0.0"
 API_PORT = 8000

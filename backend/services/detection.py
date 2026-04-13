@@ -168,6 +168,10 @@ def get_detector(
             vt_api_key=vt_api_key
         )
         _detector.load()
+    else:
+        _detector.use_virustotal = use_virustotal
+        if use_virustotal and _detector.vt_checker is None:
+            _detector.vt_checker = get_vt_checker(api_key=vt_api_key)
     
     return _detector
 

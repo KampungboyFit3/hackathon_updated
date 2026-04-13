@@ -57,6 +57,10 @@ class AsyncPredictionLogger:
                 writer.writerow(self._get_header())
     
     def log(self, url: str, prediction: str, confidence: float, source: str, input_type: str = "url", **kwargs):
+        vt_detected = kwargs.get("vt_detected_by", [])
+        if vt_detected is None:
+            vt_detected = []
+        
         entry = {
             "url": url,
             "type": input_type,
@@ -64,23 +68,26 @@ class AsyncPredictionLogger:
             "confidence": round(confidence, 4),
             "source": source,
             "model_version": kwargs.get("model_version", "v2"),
-            "vt_malicious": str(kwargs.get("vt_malicious", "")),
+            "vt_malicious": "True" if vt_detected else "False",
             "vt_confidence": kwargs.get("vt_confidence", ""),
-            "vt_detected_by": "|".join(kwargs.get("vt_detected_by", [])),
+            "vt_detected_by": "|".join(vt_detected) if vt_detected else "",
             "timestamp": datetime.utcnow().isoformat() + "Z"
         }
         self.queue.put(entry)
     
     def log_prediction_result(self, url: str, result: dict):
+        vt_detected = result.get("vt_detected_by", [])
+        if vt_detected is None:
+            vt_detected = []
+        
         self.log(
             url=url,
             prediction=result["prediction"],
             confidence=result["confidence"],
             source=result["source"],
             model_version=result.get("model_version", "v2"),
-            vt_malicious=result.get("vt_detected_by") is not None,
             vt_confidence=result.get("vt_confidence", ""),
-            vt_detected_by=result.get("vt_detected_by", [])
+            vt_detected_by=vt_detected
         )
     
     def _writer_loop(self):
@@ -135,13 +142,16 @@ def log_prediction(url: str, prediction: str, confidence: float, source: str, **
 
 
 def log_prediction_result(url: str, result: dict, input_type: str = "url"):
+    vt_detected = result.get("vt_detected_by", [])
+    if vt_detected is None:
+        vt_detected = []
+    
     logger = get_logger()
     logger.log(url, prediction=result["prediction"], confidence=result["confidence"], 
               source=result["source"], input_type=input_type,
               model_version=result.get("model_version", "v2"),
-              vt_malicious=result.get("vt_detected_by") is not None,
               vt_confidence=result.get("vt_confidence", ""),
-              vt_detected_by=result.get("vt_detected_by", []))
+              vt_detected_by=vt_detected)
 
 
 if __name__ == "__main__":
